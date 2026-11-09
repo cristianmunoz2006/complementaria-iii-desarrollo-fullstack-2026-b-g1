@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recetario seguro · Login JWT</title>
+
+  <!-- Bootstrap 4.6.2 local, en library/bootstrap-4.6.2/ -->
+  <link rel="stylesheet" href="library/bootstrap-4.6.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <div class="container py-5" style="max-width: 640px;">
+
+    <header class="mb-4 border-bottom pb-3">
+      <h1 class="text-success">Recetario seguro</h1>
+      <p class="text-muted mb-0">
+        Corte 3 · Semana 14: login con JWT y una vista protegida que
+        consume la API.
+      </p>
+    </header>
+
+    <main>
+      <!-- Vista 1: login -->
+      <section id="login-view">
+        <h2 class="h5">Iniciar sesión</h2>
+        <form id="login-form" novalidate>
+          <div class="form-group">
+            <label for="username">Usuario</label>
+            <input id="username" class="form-control" type="text" autocomplete="username" required />
+          </div>
+          <div class="form-group">
+            <label for="password">Contraseña</label>
+            <input id="password" class="form-control" type="password" autocomplete="current-password" required />
+          </div>
+          <div id="login-error" class="alert alert-danger d-none" role="alert"></div>
+          <button id="login-btn" class="btn btn-success" type="submit">Entrar</button>
+          <small class="form-text text-muted">Demo: usuario <code>admin</code> · contraseña <code>admin123</code></small>
+        </form>
+      </section>
+
+      <!-- Vista 2: datos protegidos -->
+      <section id="data-view" class="d-none">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <h2 class="h5 mb-0">Recetas</h2>
+          <button id="logout-btn" class="btn btn-outline-secondary btn-sm" type="button">Cerrar sesión</button>
+        </div>
+
+        <!-- estado: cargando -->
+        <div id="loading" class="d-none mb-3">
+          <div class="spinner-border spinner-border-sm text-success" role="status"></div>
+          <span class="ml-2">Cargando...</span>
+        </div>
+
+        <!-- estado: error -->
+        <div id="data-error" class="alert alert-danger d-none" role="alert"></div>
+
+        <!-- estado: vacío -->
+        <p id="empty" class="text-muted d-none">No hay recetas para mostrar.</p>
+
+        <!-- estado: datos -->
+        <ul id="recipe-list" class="list-group"></ul>
+      </section>
+    </main>
+
+  </div>
+
+  <script src="logic/api.js"></script>
+  <script src="logic/app.js"></script>
+</body>
+</html>

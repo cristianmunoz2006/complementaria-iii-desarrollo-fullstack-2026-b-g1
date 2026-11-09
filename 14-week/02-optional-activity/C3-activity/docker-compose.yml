@@ -1,0 +1,19 @@
+# Levanta backend (API con JWT) y frontend (nginx) con un solo comando:
+#   docker compose up --build
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8080:8080"
+    environment:
+      # Cambia este secreto (32+ caracteres) si lo vas a usar fuera de una demo
+      JWT_SECRET: "secreto-del-contenedor-cambialo-si-no-es-demo-123456"
+      # El frontend corre en http://localhost:8081 -> es el origen que CORS debe permitir
+      CORS_ALLOWED_ORIGINS: "http://localhost:8081"
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8081:80"
+    depends_on:
+      - backend

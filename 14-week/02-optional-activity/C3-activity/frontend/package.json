@@ -1,0 +1,9 @@
+{
+  "name": "recetario-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Frontend del Recetario (login JWT + lista protegida) - Corte 3, Semana 14",
+  "scripts": {
+    "test": "node --test"
+  }
+}
